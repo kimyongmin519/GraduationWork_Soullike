@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0649b90fd6d46f79dda8b7b1581a419, type: 3}
+  m_Name: Player state manager
+  m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.Agents.FSM.StateListSO
+  stateEnum: PlayerStateEnum
+  states:
+  - {fileID: 11400000, guid: 07d58168097165d41bdce65ec9dde506, type: 2}
+  - {fileID: 11400000, guid: bbc17637e2eabfa449a277463d3dd1c6, type: 2}
+  - {fileID: 11400000, guid: 3c0bebd337161e241bfc8b1aa90fda0b, type: 2}
+  - {fileID: 11400000, guid: 82ca0b43c4d82b4449b8fb1a787d9a55, type: 2}
+  - {fileID: 11400000, guid: 694d8fccf461b9c4aa77bb8d1efb5c6b, type: 2}
+  - {fileID: 11400000, guid: 33c4cc8963d036d46925d6887b7af2cc, type: 2}
+  - {fileID: 11400000, guid: d2069e41d70323246a8cb860c49bd9da, type: 2}
+  - {fileID: 11400000, guid: 3d62bcf40fcedef49a0b2725519983b8, type: 2}
+  - {fileID: 11400000, guid: 03e39d4d7a5e0da468169d94f4f0756d, type: 2}
+  - {fileID: 11400000, guid: fb16e9eded952d14baeade553ca6b83b, type: 2}
