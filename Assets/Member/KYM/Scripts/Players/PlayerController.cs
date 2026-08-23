@@ -1,3 +1,4 @@
+using System;
 using Member.KYM.Scripts.Agents;
 using Member.KYM.Scripts.Agents.FSM;
 using Member.KYM.Scripts.CoreSystems;
@@ -26,9 +27,24 @@ namespace Member.KYM.Scripts.Players
         private PlayerMover _playerMover; //임시
         private StaminaModule _stamina;
         private bool _isSpaceDecisionPending;
+        private bool _canDodgeFromSpacePress;
         private float _spacePressedTime;
 
-        public PlayerCombatModes CombatMode { get; set; } = PlayerCombatModes.NORMAL;
+        public event Action<PlayerCombatModes> OnCombatModeChanged;
+
+        private PlayerCombatModes _combatMode = PlayerCombatModes.NORMAL;
+        public PlayerCombatModes CombatMode
+        {
+            get => _combatMode;
+            set
+            {
+                if (_combatMode == value)
+                    return;
+
+                _combatMode = value;
+                OnCombatModeChanged?.Invoke(_combatMode);
+            }
+        }
         
         public ClimbLink CurrentClimbLink { get; private set; }
         public JumpLink CurrentJumpLink { get; private set; }
@@ -142,10 +158,8 @@ namespace Member.KYM.Scripts.Players
 
         private void StartSpaceDecision()
         {
-            if (StateMachine.CurrentState is not ICanDodgeState)
-                return;
-
             _isSpaceDecisionPending = true;
+            _canDodgeFromSpacePress = StateMachine.CurrentState is ICanDodgeState;
             _spacePressedTime = Time.time;
         }
 
@@ -157,6 +171,7 @@ namespace Member.KYM.Scripts.Players
             _isSpaceDecisionPending = false;
             
             if (Time.time - _spacePressedTime <= spaceHoldDecisionTime
+                && _canDodgeFromSpacePress
                 && StateMachine.CurrentState is ICanDodgeState
                 && (_stamina == null || _stamina.TryConsume(dodgeStaminaCost)))
             {
@@ -180,11 +195,10 @@ namespace Member.KYM.Scripts.Players
 
             if (PlayerInput.CurrentMovement.sqrMagnitude <= 0.01f)
                 return;
-            
-            _isSpaceDecisionPending = false;
 
             if (StateMachine.CurrentState is PlayerWalkState)
             {
+                _isSpaceDecisionPending = false;
                 ChangeState(PlayerStateEnum.RUN, 0.2f);
             }
         }

@@ -12,6 +12,8 @@ namespace Member.KYM.Scripts.Agents
         [SerializeField] private float maxStamina;
         [SerializeField] private float staminaRegainInterval;
         [SerializeField] private float staminaRegainAmount;
+        [SerializeField] private bool useStaminaRegainDelay;
+        [SerializeField, Min(0f)] private float staminaRegainDelay;
 
         #endregion
         private ModuleOwner _owner;
@@ -85,16 +87,27 @@ namespace Member.KYM.Scripts.Agents
         {
             try
             {
+                float firstRegainDelay = useStaminaRegainDelay
+                    ? staminaRegainDelay
+                    : staminaRegainInterval;
+
+                await Awaitable.WaitForSecondsAsync(
+                    Mathf.Max(0f, firstRegainDelay),
+                    cancellationToken);
+
                 while (_currentStamina < maxStamina)
                 {
-                    await Awaitable.WaitForSecondsAsync(
-                        Mathf.Max(0f, staminaRegainInterval),
-                        cancellationToken);
-
                     _currentStamina = Mathf.Min(
                         _currentStamina + Mathf.Max(0f, staminaRegainAmount),
                         maxStamina);
                     NotifyStaminaChanged();
+
+                    if (_currentStamina >= maxStamina)
+                        break;
+
+                    await Awaitable.WaitForSecondsAsync(
+                        Mathf.Max(0f, staminaRegainInterval),
+                        cancellationToken);
                 }
             }
             catch (OperationCanceledException)

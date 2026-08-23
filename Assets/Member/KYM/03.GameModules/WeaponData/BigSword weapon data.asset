@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.CombatSystems.WeaponDataSO
   <WeaponId>k__BackingField: big_sword
   <DisplayName>k__BackingField: Big Sword
+  <LayerName>k__BackingField: GreatSword
   <WeaponType>k__BackingField: 1
   <WeaponPrefab>k__BackingField: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}

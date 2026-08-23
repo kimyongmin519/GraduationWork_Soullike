@@ -4320,8 +4320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.Agents.StaminaModule
   maxStamina: 100
-  staminaRegainInterval: 0.1
-  staminaRegainAmount: 1
+  staminaRegainInterval: 0.02
+  staminaRegainAmount: 2
+  useStaminaRegainDelay: 1
+  staminaRegainDelay: 2
 --- !u!1 &1843625903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,9 +4402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6f7a89052e44b2ac683a238cb72aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.Players.PlayerWeaponAnimationController
-  animationProfiles:
-  - {fileID: 11400000, guid: d7c35715a76b4842966d20581279f694, type: 2}
-  - {fileID: 11400000, guid: e8d04ab48361417482c90bb33c86e3ca, type: 2}
 --- !u!1 &1948079545
 GameObject:
   m_ObjectHideFlags: 0

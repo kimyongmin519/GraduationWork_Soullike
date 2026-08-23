@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Member.KYM.Scripts.Agents
 {
-    public class Agent : ModuleOwner
+    public abstract class Agent : ModuleOwner
     {
         
     }

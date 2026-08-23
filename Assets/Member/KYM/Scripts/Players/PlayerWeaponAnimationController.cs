@@ -1,34 +1,34 @@
-using System.Collections.Generic;
 using KimLIb.ModuleSystems;
 using Member.KYM.Scripts.Agents;
 using Member.KYM.Scripts.CombatSystems;
+using Member.KYM.Scripts.Players.FSM;
 using UnityEngine;
 
 namespace Member.KYM.Scripts.Players
 {
     public class PlayerWeaponAnimationController : MonoBehaviour, IModule, IAfterInitModule
     {
-        [SerializeField] private WeaponAnimationProfileSO[] animationProfiles;
-
         public WeaponType CurrentWeaponType { get; private set; } = WeaponType.None;
+        public int ActiveWeaponLayerIndex { get; private set; } = -1;
 
+        private PlayerController _player;
         private PlayerWeaponController _weaponController;
         private Animator _animator;
-        private RuntimeAnimatorController _baseController;
-        private AnimatorOverrideController _runtimeOverrideController;
-        private readonly List<AnimationClip> _runtimeClips = new();
+        private WeaponDataSO _currentWeaponData;
 
         public void Initialize(ModuleOwner owner)
         {
+            _player = owner as PlayerController;
             _weaponController = owner.GetModule<PlayerWeaponController>();
             AgentRenderer playerRenderer = owner.GetModule<AgentRenderer>();
 
+            Debug.Assert(_player != null, "Weapon animation layers are player-only.");
             Debug.Assert(
                 _weaponController != null,
                 "PlayerWeaponAnimationController requires PlayerWeaponController.");
             Debug.Assert(
                 playerRenderer != null,
-                "PlayerWeaponAnimationController requires an AgentRenderer.");
+                "PlayerWeaponAnimationController requires AgentRenderer.");
 
             if (playerRenderer == null)
                 return;
@@ -36,26 +36,17 @@ namespace Member.KYM.Scripts.Players
             _animator = playerRenderer.Animator != null
                 ? playerRenderer.Animator
                 : playerRenderer.GetComponent<Animator>();
-
-            Debug.Assert(
-                _animator != null,
-                "PlayerWeaponAnimationController requires an Animator.");
-
-            if (_animator == null)
-                return;
-
-            _baseController = GetBaseController(_animator.runtimeAnimatorController);
         }
 
         public void AfterInit()
         {
-            if (_weaponController == null)
-                return;
+            if (_weaponController != null)
+                _weaponController.OnWeaponChanged += HandleWeaponChanged;
 
-            _weaponController.OnWeaponChanged += HandleWeaponChanged;
+            if (_player != null)
+                _player.OnCombatModeChanged += HandleCombatModeChanged;
 
-            if (_weaponController.CurrentWeaponData != null)
-                HandleWeaponChanged(_weaponController.CurrentWeaponData);
+            HandleWeaponChanged(_weaponController?.CurrentWeaponData);
         }
 
         private void OnDestroy()
@@ -63,143 +54,70 @@ namespace Member.KYM.Scripts.Players
             if (_weaponController != null)
                 _weaponController.OnWeaponChanged -= HandleWeaponChanged;
 
-            ReleaseRuntimeOverrides();
+            if (_player != null)
+                _player.OnCombatModeChanged -= HandleCombatModeChanged;
+
+            DeactivateActiveLayer();
         }
 
         private void HandleWeaponChanged(WeaponDataSO weaponData)
         {
-            if (_animator == null || _baseController == null || weaponData == null)
-                return;
-
-            if (CurrentWeaponType == weaponData.WeaponType)
-                return;
-
-            WeaponAnimationProfileSO profile = FindProfile(weaponData.WeaponType);
-            ApplyProfile(profile, weaponData.WeaponType);
+            DeactivateActiveLayer();
+            _currentWeaponData = weaponData;
+            CurrentWeaponType = weaponData != null
+                ? weaponData.WeaponType
+                : WeaponType.None;
+            RefreshLayerWeights();
         }
 
-        private WeaponAnimationProfileSO FindProfile(WeaponType weaponType)
+        private void HandleCombatModeChanged(PlayerCombatModes combatMode)
         {
-            if (animationProfiles == null)
-                return null;
-
-            foreach (WeaponAnimationProfileSO profile in animationProfiles)
-            {
-                if (profile != null && profile.WeaponType == weaponType)
-                    return profile;
-            }
-
-            return null;
+            RefreshLayerWeights();
         }
 
-        private void ApplyProfile(
-            WeaponAnimationProfileSO profile,
-            WeaponType weaponType)
+        private void RefreshLayerWeights()
         {
-            AnimatorOverrideController nextController = null;
-            List<AnimationClip> nextRuntimeClips = new();
+            if (_animator == null)
+                return;
 
-            if (profile != null
-                && profile.ClipOverrides != null
-                && profile.ClipOverrides.Length > 0)
-            {
-                nextController = CreateOverrideController(profile, nextRuntimeClips);
-            }
+            DeactivateActiveLayer();
 
-            _animator.runtimeAnimatorController = nextController != null
-                ? nextController
-                : _baseController;
+            if (_player == null || _player.CombatMode != PlayerCombatModes.COMBAT)
+                return;
 
-            ReleaseRuntimeOverrides();
-            _runtimeOverrideController = nextController;
-            _runtimeClips.AddRange(nextRuntimeClips);
-            CurrentWeaponType = weaponType;
+            if (_currentWeaponData == null)
+                return;
 
-            if (profile == null)
+            string layerName = _currentWeaponData.LayerName;
+
+            if (string.IsNullOrWhiteSpace(layerName))
             {
                 Debug.LogWarning(
-                    $"No weapon animation profile for {weaponType}. " +
-                    "The base animator clips will be used.",
+                    $"Weapon '{_currentWeaponData.name}' has no animator layer name.",
+                    _currentWeaponData);
+                return;
+            }
+
+            int activeLayerIndex = _animator.GetLayerIndex(layerName);
+
+            if (activeLayerIndex <= 0)
+            {
+                Debug.LogError(
+                    $"Weapon animator layer '{layerName}' was not found or points to the Base Layer.",
                     this);
-            }
-        }
-
-        private AnimatorOverrideController CreateOverrideController(
-            WeaponAnimationProfileSO profile,
-            List<AnimationClip> runtimeClips)
-        {
-            AnimatorOverrideController controller =
-                new AnimatorOverrideController(_baseController);
-            List<KeyValuePair<AnimationClip, AnimationClip>> overrides = new();
-            controller.GetOverrides(overrides);
-
-            foreach (WeaponAnimationClipOverride clipOverride in profile.ClipOverrides)
-            {
-                if (!clipOverride.IsValid)
-                    continue;
-
-                int overrideIndex = FindOverrideIndex(
-                    overrides,
-                    clipOverride.OriginalClip);
-
-                if (overrideIndex < 0)
-                {
-                    Debug.LogWarning(
-                        $"{clipOverride.OriginalClip.name} is not used by the base " +
-                        "animator controller.",
-                        profile);
-                    continue;
-                }
-
-                AnimationClip runtimeClip = Instantiate(clipOverride.OverrideClip);
-                runtimeClip.name = clipOverride.OverrideClip.name + " (Runtime Override)";
-                runtimeClip.events = clipOverride.OriginalClip.events;
-                runtimeClips.Add(runtimeClip);
-
-                overrides[overrideIndex] = new KeyValuePair<AnimationClip, AnimationClip>(
-                    clipOverride.OriginalClip,
-                    runtimeClip);
+                return;
             }
 
-            controller.ApplyOverrides(overrides);
-            return controller;
+            _animator.SetLayerWeight(activeLayerIndex, 1f);
+            ActiveWeaponLayerIndex = activeLayerIndex;
         }
 
-        private static int FindOverrideIndex(
-            IReadOnlyList<KeyValuePair<AnimationClip, AnimationClip>> overrides,
-            AnimationClip originalClip)
+        private void DeactivateActiveLayer()
         {
-            for (int index = 0; index < overrides.Count; index++)
-            {
-                if (overrides[index].Key == originalClip)
-                    return index;
-            }
+            if (_animator != null && ActiveWeaponLayerIndex > 0)
+                _animator.SetLayerWeight(ActiveWeaponLayerIndex, 0f);
 
-            return -1;
-        }
-
-        private static RuntimeAnimatorController GetBaseController(
-            RuntimeAnimatorController controller)
-        {
-            while (controller is AnimatorOverrideController overrideController)
-                controller = overrideController.runtimeAnimatorController;
-
-            return controller;
-        }
-
-        private void ReleaseRuntimeOverrides()
-        {
-            if (_runtimeOverrideController != null)
-                Destroy(_runtimeOverrideController);
-
-            foreach (AnimationClip runtimeClip in _runtimeClips)
-            {
-                if (runtimeClip != null)
-                    Destroy(runtimeClip);
-            }
-
-            _runtimeOverrideController = null;
-            _runtimeClips.Clear();
+            ActiveWeaponLayerIndex = -1;
         }
     }
 }
