@@ -9,6 +9,7 @@ namespace Member.KYM.Scripts.Players
         [SerializeField] private Transform backSocket;
         [SerializeField] private Transform handSocket;
         public bool IsWeaponInHand { get; private set; }
+        public Transform CurrentWeapon => weapon;
 
         public void Initialize(ModuleOwner owner)
         {
@@ -26,6 +27,19 @@ namespace Member.KYM.Scripts.Players
         {
             Attach(weapon, backSocket);
             IsWeaponInHand = false;
+        }
+
+        public void SetWeapon(Transform newWeapon)
+        {
+            if (newWeapon == null)
+                return;
+
+            weapon = newWeapon;
+
+            if (IsWeaponInHand)
+                AttachToHand();
+            else
+                AttachToBack();
         }
 
         private void Attach( Transform target, Transform socket)

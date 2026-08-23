@@ -1,4 +1,5 @@
 using KimLIb.AnimatorSystems;
+using Member.KYM.Scripts.Agents;
 using Member.KYM.Scripts.CombatSystems;
 using UnityEngine;
 
@@ -11,8 +12,10 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
         [SerializeField] private float comboWindow = 0.4f; // 이 시간 안에 다시 입력하면 콤보가 이어진다.
         
         [SerializeField] private float comboInputBufferTime = 0.8f; // 공격 중 미리 입력한 콤보 예약 유지 시간. 0 이하면 현재 공격이 끝날 때까지 유지된다.
+        [SerializeField, Min(0f)] private float staminaCost = 15f;
 
         private AgentTrigger _trigger;
+        private StaminaModule _stamina;
         private bool _hasBufferedNextCombo;
         private float _lastBufferedInputTime;
         
@@ -23,7 +26,9 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
         {
             base.InitializeSkill(skillModule);
             _trigger = _player.GetModule<AgentTrigger>();
+            _stamina = _player.GetModule<StaminaModule>();
             Debug.Assert(_trigger != null, "소드콤보 공격은 AgentTrigger 모듈이 필요합니다.");
+            Debug.Assert(_stamina != null, "소드콤보 공격은 StaminaModule이 필요합니다.");
         }
 
         public override bool CanUseSkill(GameObject target = null)
@@ -32,9 +37,10 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
                 return false;
 
             if (IsUsing)
-                return true;
+                return _stamina == null || _stamina.CanConsume(staminaCost);
 
-            return NormalizedCooldown >= 1f;
+            return NormalizedCooldown >= 1f
+                   && (_stamina == null || _stamina.CanConsume(staminaCost));
         }
 
         public override void UseSkill(GameObject target = null)
@@ -44,6 +50,9 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
                 BufferNextComboInput();
                 return;
             }
+
+            if (_stamina != null && !_stamina.TryConsume(staminaCost))
+                return;
 
             base.UseSkill(target);
 
@@ -93,6 +102,12 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
         {
             if (HasValidBufferedNextCombo())
             {
+                if (_stamina != null && !_stamina.TryConsume(staminaCost))
+                {
+                    StopSkill();
+                    return;
+                }
+
                 ComboCounter = GetNextComboCounter();
                 _hasBufferedNextCombo = false;
                 PlayCurrentComboClip();
