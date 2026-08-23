@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3bf29d5cb54fdd861c8aa290b5a81d, type: 3}
+  m_Name: Katana weapon data
+  m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.CombatSystems.WeaponDataSO
+  <WeaponId>k__BackingField: katana
+  <DisplayName>k__BackingField: Katana
+  <WeaponType>k__BackingField: 2
+  <WeaponPrefab>k__BackingField: {fileID: 1489832004896410, guid: a20a162ac11a35643bed0f3823718abb, type: 3}

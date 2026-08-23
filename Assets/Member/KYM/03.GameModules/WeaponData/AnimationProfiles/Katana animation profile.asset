@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf0e1fc526d4b649ae9f0ea3cd8cb2c, type: 3}
+  m_Name: Katana animation profile
+  m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.CombatSystems.WeaponAnimationProfileSO
+  <WeaponType>k__BackingField: 2
+  <ClipOverrides>k__BackingField:
+  - <OriginalClip>k__BackingField: {fileID: 7400000, guid: 474829d8d33d68b4ab429cc5ff134679, type: 2}
+    <OverrideClip>k__BackingField: {fileID: 7400000, guid: 00a28cb25fc8dad40bf3248b50123b32, type: 3}
+  - <OriginalClip>k__BackingField: {fileID: 7400000, guid: aa783c7dec29ddc4db98cb1be13a96c2, type: 2}
+    <OverrideClip>k__BackingField: {fileID: 7400000, guid: 129f05c2fdd00fd4fb608dfbf4231c89, type: 3}
+  - <OriginalClip>k__BackingField: {fileID: 7400000, guid: fc4d168233b67cc40bd6d689d0335d18, type: 2}
+    <OverrideClip>k__BackingField: {fileID: 7400000, guid: 024f67ce97696a64da4b6935b768cf21, type: 3}
+  - <OriginalClip>k__BackingField: {fileID: 7400000, guid: e8505bf6822367c4b9267083913e1565, type: 2}
+    <OverrideClip>k__BackingField: {fileID: 7400000, guid: 35b2926bc0946d74a86943c6ee00f78c, type: 3}
+  - <OriginalClip>k__BackingField: {fileID: 7400000, guid: df88025f1b4530549b586be61225e95b, type: 2}
+    <OverrideClip>k__BackingField: {fileID: 7400000, guid: 5e5a4644beb17764ba30a1d7fce81d0e, type: 3}
