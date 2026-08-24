@@ -10,5 +10,7 @@ namespace Member.KYM.Scripts.CombatSystems
         public float cooldown;
         public float skillRange = 1f;
         public float damageMultiplier = 1f;
+        public float staggerDamage;
+        public float knockbackForce;
     }
 }

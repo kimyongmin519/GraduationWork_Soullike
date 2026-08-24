@@ -17,3 +17,4 @@ MonoBehaviour:
   <LayerName>k__BackingField: Katana
   <WeaponType>k__BackingField: 2
   <WeaponPrefab>k__BackingField: {fileID: 1489832004896410, guid: a20a162ac11a35643bed0f3823718abb, type: 3}
+  <AttackPower>k__BackingField: 25

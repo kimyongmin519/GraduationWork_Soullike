@@ -104,6 +104,7 @@ namespace Member.KYM.Scripts.Editor
 
             Dictionary<Motion, Motion> replacements = CreateKatanaClips();
             AddSyncedLayers(controller, replacements);
+            DamageAnimationEventSetup.SetupDamageEvents();
 
             EditorUtility.SetDirty(controller);
             AssetDatabase.SaveAssets();

@@ -1,6 +1,7 @@
 using System;
 using KimLIb.ModuleSystems;
 using Member.KYM.Scripts.CombatSystems;
+using Member.KYM.Scripts.CombatSystems.DamageSystems;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,12 +21,15 @@ namespace Member.KYM.Scripts.Players
 
         public WeaponDataSO CurrentWeaponData { get; private set; }
         public GameObject CurrentWeaponInstance { get; private set; }
+        public OverlapDamageCaster CurrentDamageCaster { get; private set; }
         public int CurrentWeaponIndex { get; private set; } = -1;
 
+        private ModuleOwner _owner;
         private PlayerWeaponHolder _weaponHolder;
 
         public void Initialize(ModuleOwner owner)
         {
+            _owner = owner;
             _weaponHolder = owner.GetModule<PlayerWeaponHolder>();
             Debug.Assert(
                 _weaponHolder != null,
@@ -108,11 +112,26 @@ namespace Member.KYM.Scripts.Players
             GameObject newWeapon = Instantiate(weaponData.WeaponPrefab);
             newWeapon.name = weaponData.DisplayName;
 
+            OverlapDamageCaster damageCaster =
+                newWeapon.GetComponentInChildren<OverlapDamageCaster>(true);
+
+            if (damageCaster == null)
+            {
+                Debug.LogError(
+                    $"Weapon '{weaponData.name}' requires its own OverlapDamageCaster.",
+                    weaponData);
+                Destroy(newWeapon);
+                return false;
+            }
+
+            damageCaster.Initialize(_owner);
+
             Transform previousWeapon = _weaponHolder.CurrentWeapon;
             _weaponHolder.SetWeapon(newWeapon.transform);
 
             CurrentWeaponData = weaponData;
             CurrentWeaponInstance = newWeapon;
+            CurrentDamageCaster = damageCaster;
 
             if (previousWeapon != null && previousWeapon != newWeapon.transform)
             {

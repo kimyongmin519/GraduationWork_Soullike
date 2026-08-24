@@ -1,10 +1,11 @@
 using System;
 using KimLIb.ModuleSystems;
+using Member.KYM.Scripts.CombatSystems.DamageSystems;
 using UnityEngine;
 
 namespace Member.KYM.Scripts.Agents
 {
-    public class HealthModule : MonoBehaviour, IModule
+    public class HealthModule : MonoBehaviour, IModule, IDamageable
     {
 
         public float MaxHealth => maxHealth;
@@ -18,6 +19,7 @@ namespace Member.KYM.Scripts.Agents
 
         public event Action OnDeath;
         public event Action<float, float> OnHealthChanged;
+        public event Action<DamageData> OnDamaged;
 
         public void Initialize(ModuleOwner owner)
         {
@@ -38,6 +40,15 @@ namespace Member.KYM.Scripts.Agents
             }
 
             NotifyHealthChanged();
+        }
+
+        public void ApplyDamage(DamageData damageData)
+        {
+            if (damageData.DamageAmount <= 0f)
+                return;
+
+            ApplyDamage(damageData.DamageAmount);
+            OnDamaged?.Invoke(damageData);
         }
 
         public void SetMaxHealth(float maxHealthValue)

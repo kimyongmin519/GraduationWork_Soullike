@@ -16,4 +16,6 @@ MonoBehaviour:
   skillName: "\uAC15\uACF5\uACA9"
   cooldown: 0
   skillRange: 1
-  damageMultiplier: 1
+  damageMultiplier: 1.7
+  staggerDamage: 35
+  knockbackForce: 4

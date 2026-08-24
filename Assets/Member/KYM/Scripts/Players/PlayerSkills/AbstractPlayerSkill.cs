@@ -46,5 +46,6 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
             _lastUseTime = Time.time;
             OnSkillEnd?.Invoke();
         }
+
     }
 }

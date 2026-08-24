@@ -14,6 +14,7 @@ namespace Member.KYM.Scripts.CombatSystems
     {
         public ModuleOwner Owner { get; private set; }
         public PlayerController Player { get; private set; }
+        public ISkill CurrentSkill => _currentSkill;
         public event Action OnCurrentSkillEnd;
 
         private Dictionary<int, ISkill> _skillDict;

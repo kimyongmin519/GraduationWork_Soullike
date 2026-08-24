@@ -10,5 +10,6 @@ namespace Member.KYM.Scripts.CombatSystems
         [field: SerializeField] public string LayerName { get; private set; }
         [field: SerializeField] public WeaponType WeaponType { get; private set; }
         [field: SerializeField] public GameObject WeaponPrefab { get; private set; }
+        [field: SerializeField, Min(0f)] public float AttackPower { get; private set; }
     }
 }
