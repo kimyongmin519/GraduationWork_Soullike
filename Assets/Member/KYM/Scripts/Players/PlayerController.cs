@@ -22,7 +22,12 @@ namespace Member.KYM.Scripts.Players
         [SerializeField, Min(0f)] private float dodgeStaminaCost = 20f;
         [SerializeField, Min(0f)] private float climbStaminaCost = 35f;
         [SerializeField, Min(0f)] private float traversalJumpStaminaCost = 25f;
-        
+
+        #region 참조하는 모듈 프로퍼티
+
+        public PlayerRiggingController RiggingController { get; private set; }
+
+        #endregion
         public StateMachine StateMachine { get; private set; }
         private PlayerMover _playerMover; //임시
         private StaminaModule _stamina;
@@ -55,6 +60,7 @@ namespace Member.KYM.Scripts.Players
             StateMachine = new StateMachine(this, playerStates.states);
             _playerMover = GetModule<PlayerMover>();
             _stamina = GetModule<StaminaModule>();
+            RiggingController = GetModule<PlayerRiggingController>();
             Debug.Assert(_stamina != null, "PlayerController requires StaminaModule.");
         }
 
