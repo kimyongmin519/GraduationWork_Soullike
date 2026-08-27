@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Script.Item
+namespace Member.KDH._03.Scripts.Item
 {
     [CreateAssetMenu(fileName = "New Consumable Item", menuName = "Item/Consumable Item")]
     public class ConsumableItemDataSO : AbstractItemDataSO

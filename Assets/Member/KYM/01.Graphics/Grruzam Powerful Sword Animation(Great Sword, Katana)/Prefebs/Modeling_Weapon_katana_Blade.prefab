@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4503961772854434}
   - component: {fileID: 33456485685145684}
   - component: {fileID: 23609973976857100}
+  - component: {fileID: 1489832004896422}
   m_Layer: 0
   m_Name: Modeling_Weapon_katana_Blade
   m_TagString: Untagged
@@ -135,14 +136,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e5c92b95ad4c12bbfb3347893d8c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.CombatSystems.DamageSystems.OverlapDamageCaster
-  useWeaponRendererBounds: 1
-  rendererBoundsPadding: 0.08
   castType: 1
-  offset: {x: 0, y: 0, z: 0}
-  boxSize: {x: 1, y: 1, z: 1}
   radius: 0.5
-  capsuleHeight: 2
+  boxSize: {x: 1, y: 1, z: 1}
   targetLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   maxHitCount: 32
+  isDebug: 1
+--- !u!114 &1489832004896422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489832004896410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040223b125fc4fe2bebca1194408a1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Member.KYM.Scripts.CombatSystems.WeaponSystem.MeleeWeapon
+  <WeaponData>k__BackingField: {fileID: 11400000, guid: 109e2df76b72424a98b179685335526c, type: 2}
+  <NormalAttackCasterPrefab>k__BackingField: {fileID: 1489832004896421}

@@ -1,4 +1,5 @@
 using KimLIb.ModuleSystems;
+using Member.KYM.Scripts.CombatSystems.WeaponSystem;
 using UnityEngine;
 
 namespace Member.KYM.Scripts.CombatSystems.DamageSystems

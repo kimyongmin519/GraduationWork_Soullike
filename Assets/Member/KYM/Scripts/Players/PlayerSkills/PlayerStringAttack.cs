@@ -11,26 +11,25 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
         [SerializeField] private AnimParamSO skillParam;
         [SerializeField, Min(0f)] private float staminaCost = 30f;
         private AgentTrigger _trigger;
-        private StaminaModule _stamina;
+        private StaminaModule _staminaModule;
 
         public override void InitializeSkill(ISkillModule skillModule)
         {
             base.InitializeSkill(skillModule);
             _trigger = _player.GetModule<AgentTrigger>();
-            _stamina = _player.GetModule<StaminaModule>();
+            _staminaModule = _player.GetModule<StaminaModule>();
             Debug.Assert(_trigger != null, "플레이어 스트롱 스킬은 에이전트 트리거가 필요함!!");
-            Debug.Assert(_stamina != null, "플레이어 스트롱 스킬은 StaminaModule이 필요합니다.");
+            Debug.Assert(_staminaModule != null, "플레이어 스트롱 스킬은 StaminaModule이 필요합니다.");
         }
         
         public override void UseSkill(GameObject target = null)
         {
-            if (_stamina != null && !_stamina.TryConsume(staminaCost))
+            if (_staminaModule != null && !_staminaModule.TryConsume(staminaCost))
                 return;
 
             base.UseSkill(target);
 
             _mover.CanManualMove = false;
-            _mover.RotateTo(_player.UIInput.GetHorizontalCameraForward());
             _renderer.PlayClip(skillParam.ParamHash);
 
             _trigger.OnAnimationEnd += HandleAnimationEnd;
@@ -52,7 +51,7 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
         {
             return NormalizedCooldown >= 1f
                    && !IsUsing
-                   && (_stamina == null || _stamina.CanConsume(staminaCost));
+                   && (_staminaModule == null || _staminaModule.CanConsume(staminaCost));
         }
     }
 }

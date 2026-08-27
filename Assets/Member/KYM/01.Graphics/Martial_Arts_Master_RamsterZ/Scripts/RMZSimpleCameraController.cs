@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TemplateProjects
+namespace Member.KYM._01.Graphics.Martial_Arts_Master_RamsterZ.Scripts
 {
     public class SimpleCameraController : MonoBehaviour
     {

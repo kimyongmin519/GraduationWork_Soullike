@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4065391040320879995
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+      propertyPath: m_Name
+      value: Sci-fi_grenade_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+--- !u!4 &4603121793004001936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 68865843fa20a214a843ce3e4a0feaf7, type: 3}
+  m_PrefabInstance: {fileID: 4065391040320879995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7799073806192863737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4603121793004001936}
+    m_Modifications:
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0423
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0397
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021619620619069069, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360743450271677495, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}
+      propertyPath: m_Name
+      value: Sci-fi_grenade_01_Detail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1c5e70d9a4b2d3448f88ce58e7dd361, type: 3}

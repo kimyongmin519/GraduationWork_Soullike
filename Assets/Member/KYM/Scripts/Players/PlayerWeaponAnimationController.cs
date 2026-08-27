@@ -1,6 +1,6 @@
 using KimLIb.ModuleSystems;
 using Member.KYM.Scripts.Agents;
-using Member.KYM.Scripts.CombatSystems;
+using Member.KYM.Scripts.CombatSystems.WeaponSystem;
 using Member.KYM.Scripts.Players.FSM;
 using UnityEngine;
 
@@ -13,29 +13,22 @@ namespace Member.KYM.Scripts.Players
 
         private PlayerController _player;
         private PlayerWeaponController _weaponController;
-        private Animator _animator;
+        private AgentRenderer _playerRenderer;
         private WeaponDataSO _currentWeaponData;
 
         public void Initialize(ModuleOwner owner)
         {
             _player = owner as PlayerController;
             _weaponController = owner.GetModule<PlayerWeaponController>();
-            AgentRenderer playerRenderer = owner.GetModule<AgentRenderer>();
+            _playerRenderer = owner.GetModule<PlayerRenderer>();
 
             Debug.Assert(_player != null, "Weapon animation layers are player-only.");
             Debug.Assert(
                 _weaponController != null,
                 "PlayerWeaponAnimationController requires PlayerWeaponController.");
             Debug.Assert(
-                playerRenderer != null,
+                _playerRenderer != null,
                 "PlayerWeaponAnimationController requires AgentRenderer.");
-
-            if (playerRenderer == null)
-                return;
-
-            _animator = playerRenderer.Animator != null
-                ? playerRenderer.Animator
-                : playerRenderer.GetComponent<Animator>();
         }
 
         public void AfterInit()
@@ -62,7 +55,6 @@ namespace Member.KYM.Scripts.Players
 
         private void HandleWeaponChanged(WeaponDataSO weaponData)
         {
-            DeactivateActiveLayer();
             _currentWeaponData = weaponData;
             CurrentWeaponType = weaponData != null
                 ? weaponData.WeaponType
@@ -77,9 +69,6 @@ namespace Member.KYM.Scripts.Players
 
         private void RefreshLayerWeights()
         {
-            if (_animator == null)
-                return;
-
             DeactivateActiveLayer();
 
             if (_player == null || _player.CombatMode != PlayerCombatModes.COMBAT)
@@ -98,7 +87,7 @@ namespace Member.KYM.Scripts.Players
                 return;
             }
 
-            int activeLayerIndex = _animator.GetLayerIndex(layerName);
+            int activeLayerIndex = _playerRenderer.Animator.GetLayerIndex(layerName);
 
             if (activeLayerIndex <= 0)
             {
@@ -108,14 +97,25 @@ namespace Member.KYM.Scripts.Players
                 return;
             }
 
-            _animator.SetLayerWeight(activeLayerIndex, 1f);
+            _playerRenderer.Animator.SetLayerWeight(activeLayerIndex, 1f);
             ActiveWeaponLayerIndex = activeLayerIndex;
         }
 
         private void DeactivateActiveLayer()
         {
-            if (_animator != null && ActiveWeaponLayerIndex > 0)
-                _animator.SetLayerWeight(ActiveWeaponLayerIndex, 0f);
+            if (_playerRenderer == null || _playerRenderer.Animator == null)
+            {
+                ActiveWeaponLayerIndex = -1;
+                return;
+            }
+
+            Animator animator = _playerRenderer.Animator;
+
+            if (ActiveWeaponLayerIndex > 0
+                && ActiveWeaponLayerIndex < animator.layerCount)
+            {
+                animator.SetLayerWeight(ActiveWeaponLayerIndex, 0f);
+            }
 
             ActiveWeaponLayerIndex = -1;
         }

@@ -39,6 +39,7 @@ namespace Member.KYM.Scripts.Players.FSM
 
         public override void Enter(float transitionDuration, int layerIndex = 0)
         {
+            ResetAnimationRigging();
             _climbLink = _player.CurrentClimbLink;
 
             if (_climbLink == null || !_climbLink.IsValid)

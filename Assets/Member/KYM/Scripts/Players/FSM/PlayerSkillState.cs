@@ -19,6 +19,7 @@ namespace Member.KYM.Scripts.Players.FSM
         public override void Enter(float transitionDuration, int layerIndex = 0)
         {
             //base.Enter(transitionDuration, layerIndex); //베이스는 실행하지 않는다.
+            ResetAnimationRigging();
             _skillModule.OnCurrentSkillEnd += HandleSkillEnd;
             _isSkillEnd = false;
         }

@@ -2,6 +2,7 @@ using System;
 using KimLIb.ModuleSystems;
 using Member.KYM.Scripts.CombatSystems;
 using Member.KYM.Scripts.CombatSystems.DamageSystems;
+using Member.KYM.Scripts.CombatSystems.WeaponSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,19 +10,16 @@ namespace Member.KYM.Scripts.Players
 {
     public class PlayerWeaponController : MonoBehaviour, IModule, IAfterInitModule
     {
-        [Header("Temporary Loadout")]
         [SerializeField] private WeaponDataSO[] testLoadout;
         [SerializeField, Min(0)] private int defaultWeaponIndex;
-
-        [Header("Temporary Input")]
+        
         [Tooltip("인벤토리 연결 전 테스트용입니다. Tab을 누르면 다음 무기로 교체합니다.")]
         [SerializeField] private bool enableTemporaryKeyboardInput = true;
 
         public event Action<WeaponDataSO> OnWeaponChanged;
 
         public WeaponDataSO CurrentWeaponData { get; private set; }
-        public GameObject CurrentWeaponInstance { get; private set; }
-        public OverlapDamageCaster CurrentDamageCaster { get; private set; }
+        public AbstractWeapon CurrentWeaponInstance { get; private set; }
         public int CurrentWeaponIndex { get; private set; } = -1;
 
         private ModuleOwner _owner;
@@ -99,9 +97,7 @@ namespace Member.KYM.Scripts.Players
 
         public bool EquipWeapon(WeaponDataSO weaponData)
         {
-            if (_weaponHolder == null
-                || weaponData == null
-                || weaponData.WeaponPrefab == null)
+            if (_weaponHolder == null || weaponData == null || weaponData.WeaponPrefab == null)
             {
                 return false;
             }
@@ -109,29 +105,15 @@ namespace Member.KYM.Scripts.Players
             if (CurrentWeaponData == weaponData && CurrentWeaponInstance != null)
                 return true;
 
-            GameObject newWeapon = Instantiate(weaponData.WeaponPrefab);
+            AbstractWeapon newWeapon = Instantiate(weaponData.WeaponPrefab);
             newWeapon.name = weaponData.DisplayName;
-
-            OverlapDamageCaster damageCaster =
-                newWeapon.GetComponentInChildren<OverlapDamageCaster>(true);
-
-            if (damageCaster == null)
-            {
-                Debug.LogError(
-                    $"Weapon '{weaponData.name}' requires its own OverlapDamageCaster.",
-                    weaponData);
-                Destroy(newWeapon);
-                return false;
-            }
-
-            damageCaster.Initialize(_owner);
+            newWeapon.InitializeWeapon(_owner);
 
             Transform previousWeapon = _weaponHolder.CurrentWeapon;
             _weaponHolder.SetWeapon(newWeapon.transform);
 
             CurrentWeaponData = weaponData;
             CurrentWeaponInstance = newWeapon;
-            CurrentDamageCaster = damageCaster;
 
             if (previousWeapon != null && previousWeapon != newWeapon.transform)
             {

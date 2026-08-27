@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Script.Item
+namespace Member.KDH._03.Scripts.Item
 {
     public enum ItemType
     {

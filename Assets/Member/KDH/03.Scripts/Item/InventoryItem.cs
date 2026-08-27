@@ -1,4 +1,4 @@
-namespace Script.Item
+namespace Member.KDH._03.Scripts.Item
 {
     [System.Serializable]
     public class InventoryItem

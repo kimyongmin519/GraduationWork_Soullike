@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &354343260996436627
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_round_shield_04
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+--- !u!4 &243291330015552888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4fcc7aac62c95540bfe1be84631bf94, type: 3}
+  m_PrefabInstance: {fileID: 354343260996436627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &726906581400556994
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 243291330015552888}
+    m_Modifications:
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958577401656255889, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4441782339091857195, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_round_shield_04_Detail_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7221cfcbbc7bcd4797c95127ac8c5b5, type: 3}
+--- !u!1001 &9170692298409086932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 243291330015552888}
+    m_Modifications:
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549676766348782351, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894008260446745013, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_round_shield_04_Detail_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c5d65290e634c440aaaa94bb98e7467, type: 3}

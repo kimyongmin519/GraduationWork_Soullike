@@ -26,9 +26,14 @@ namespace Member.KYM.Scripts.Agents
 
         public void ChangeState(int newStateIndex, float transitionDuration)
         {
-            CurrentState?.Exit();
+            AgentState previousState = CurrentState;
+            previousState?.Exit();
+
             AgentState newState = _stateDict.GetValueOrDefault(newStateIndex);
             Debug.Assert(newState != null, $"new State is null {newStateIndex}");
+
+            if (newState == null)
+                return;
             
             CurrentState = newState;
             CurrentState.Enter(transitionDuration);

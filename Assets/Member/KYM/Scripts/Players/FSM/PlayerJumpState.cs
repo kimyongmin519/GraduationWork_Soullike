@@ -37,6 +37,7 @@ namespace Member.KYM.Scripts.Players.FSM
 
         public override void Enter(float transitionDuration, int layerIndex = 0)
         {
+            ResetAnimationRigging();
             _isTraversalActive = false;
             _jumpLink = _player.CurrentJumpLink;
 

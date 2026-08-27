@@ -22,15 +22,10 @@ namespace Member.KYM.Scripts.Players
         [SerializeField, Min(0f)] private float dodgeStaminaCost = 20f;
         [SerializeField, Min(0f)] private float climbStaminaCost = 35f;
         [SerializeField, Min(0f)] private float traversalJumpStaminaCost = 25f;
-
-        #region 참조하는 모듈 프로퍼티
-
-        public PlayerRiggingController RiggingController { get; private set; }
-
-        #endregion
+        
         public StateMachine StateMachine { get; private set; }
+        public StaminaModule StaminaModule { get; private set; }
         private PlayerMover _playerMover; //임시
-        private StaminaModule _stamina;
         private bool _isSpaceDecisionPending;
         private bool _canDodgeFromSpacePress;
         private float _spacePressedTime;
@@ -59,9 +54,8 @@ namespace Member.KYM.Scripts.Players
             base.InitializeModules();
             StateMachine = new StateMachine(this, playerStates.states);
             _playerMover = GetModule<PlayerMover>();
-            _stamina = GetModule<StaminaModule>();
-            RiggingController = GetModule<PlayerRiggingController>();
-            Debug.Assert(_stamina != null, "PlayerController requires StaminaModule.");
+            StaminaModule = GetModule<StaminaModule>();
+            Debug.Assert(StaminaModule != null, "PlayerController requires StaminaModule.");
         }
 
         protected override void AfterInitializeModules()
@@ -85,7 +79,7 @@ namespace Member.KYM.Scripts.Players
             if (StateMachine.CurrentState is PlayerClimbState)
                 return;
 
-            if (_stamina != null && !_stamina.TryConsume(climbStaminaCost))
+            if (StaminaModule != null && !StaminaModule.TryConsume(climbStaminaCost))
                 return;
 
             CurrentClimbLink = climbLink;
@@ -115,8 +109,7 @@ namespace Member.KYM.Scripts.Players
                 return;
             }
 
-            if (_stamina != null
-                && !_stamina.TryConsume(traversalJumpStaminaCost))
+            if (!StaminaModule.TryConsume(traversalJumpStaminaCost))
             {
                 return;
             }
@@ -179,7 +172,7 @@ namespace Member.KYM.Scripts.Players
             if (Time.time - _spacePressedTime <= spaceHoldDecisionTime
                 && _canDodgeFromSpacePress
                 && StateMachine.CurrentState is ICanDodgeState
-                && (_stamina == null || _stamina.TryConsume(dodgeStaminaCost)))
+                && StaminaModule.TryConsume(dodgeStaminaCost))
             {
                 ChangeState(PlayerStateEnum.DODGE);
             }

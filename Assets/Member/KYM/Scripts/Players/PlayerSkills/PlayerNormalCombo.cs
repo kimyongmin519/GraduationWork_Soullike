@@ -1,6 +1,8 @@
 using KimLIb.AnimatorSystems;
 using Member.KYM.Scripts.Agents;
 using Member.KYM.Scripts.CombatSystems;
+using Member.KYM.Scripts.CombatSystems.DamageSystems;
+using Member.KYM.Scripts.CombatSystems.WeaponSystem;
 using UnityEngine;
 
 namespace Member.KYM.Scripts.Players.PlayerSkills
@@ -9,6 +11,9 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
     {
         [SerializeField] private AnimParamSO[] comboClips;
         
+        [Tooltip("비어 있으면 이 스킬 오브젝트의 자식으로 캐스터를 생성합니다.")]
+        [SerializeField] private Transform damageCasterRoot;
+        
         [SerializeField] private float comboWindow = 0.4f; // 이 시간 안에 다시 입력하면 콤보가 이어진다.
         
         [SerializeField] private float comboInputBufferTime = 0.8f; // 공격 중 미리 입력한 콤보 예약 유지 시간. 0 이하면 현재 공격이 끝날 때까지 유지된다.
@@ -16,6 +21,8 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
 
         private AgentTrigger _trigger;
         private StaminaModule _stamina;
+        private PlayerWeaponController _weaponController;
+        private AbstractDamageCaster _currentDamageCaster;
         private bool _hasBufferedNextCombo;
         private float _lastBufferedInputTime;
         
@@ -27,8 +34,22 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
             base.InitializeSkill(skillModule);
             _trigger = _player.GetModule<AgentTrigger>();
             _stamina = _player.GetModule<StaminaModule>();
+            _weaponController = _player.GetModule<PlayerWeaponController>();
             Debug.Assert(_trigger != null, "소드콤보 공격은 AgentTrigger 모듈이 필요합니다.");
             Debug.Assert(_stamina != null, "소드콤보 공격은 StaminaModule이 필요합니다.");
+            Debug.Assert(_weaponController != null, "평타 스킬은 PlayerWeaponController 모듈이 필요합니다.");
+
+            if (damageCasterRoot == null)
+                damageCasterRoot = transform;
+
+            if (_trigger != null)
+                _trigger.OnDamageCastTrigger += HandleDamageCast;
+
+            if (_weaponController != null)
+            {
+                _weaponController.OnWeaponChanged += HandleWeaponChanged;
+                RefreshDamageCaster();
+            }
         }
 
         public override bool CanUseSkill(GameObject target = null)
@@ -66,7 +87,6 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
             }
             
             _hasBufferedNextCombo = false;
-            _mover.RotateTo(_player.UIInput.GetHorizontalCameraForward());
             _mover.CanManualMove = false;
             PlayCurrentComboClip();
         }
@@ -95,14 +115,56 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
 
         private void HandleDamageCast()
         {
-            
+            if (!IsUsing
+                || _currentDamageCaster == null
+                || _weaponController == null)
+            {
+                return;
+            }
+
+            _currentDamageCaster.CastAndApply(
+                _weaponController.CurrentWeaponData,
+                SkillData);
+        }
+
+        public void SetDamageCaster(AbstractDamageCaster casterPrefab)
+        {
+            if (_currentDamageCaster != null)
+            {
+                Destroy(_currentDamageCaster.gameObject);
+                _currentDamageCaster = null;
+            }
+
+            if (casterPrefab == null)
+                return;
+
+            _currentDamageCaster = Instantiate(
+                casterPrefab,
+                damageCasterRoot,
+                false);
+            _currentDamageCaster.gameObject.SetActive(true);
+            _currentDamageCaster.Initialize(_player);
+        }
+
+        private void HandleWeaponChanged(WeaponDataSO weaponData)
+        {
+            RefreshDamageCaster();
+        }
+
+        private void RefreshDamageCaster()
+        {
+            AbstractDamageCaster casterPrefab =
+                (_weaponController?.CurrentWeaponInstance as MeleeWeapon)
+                ?.NormalAttackCasterPrefab;
+
+            SetDamageCaster(casterPrefab);
         }
         
         private void HandleAnimationEnd()
         {
             if (HasValidBufferedNextCombo())
             {
-                if (_stamina != null && !_stamina.TryConsume(staminaCost))
+                if (_stamina.TryConsume(staminaCost))
                 {
                     StopSkill();
                     return;
@@ -132,6 +194,15 @@ namespace Member.KYM.Scripts.Players.PlayerSkills
                 return 0;
 
             return (ComboCounter + 1) % comboClips.Length;
+        }
+
+        private void OnDestroy()
+        {
+            if (_trigger != null)
+                _trigger.OnDamageCastTrigger -= HandleDamageCast;
+
+            if (_weaponController != null)
+                _weaponController.OnWeaponChanged -= HandleWeaponChanged;
         }
     }
 }

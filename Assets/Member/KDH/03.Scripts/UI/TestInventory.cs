@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Script.Item;
+using Member.KDH._03.Scripts.Item;
 using UnityEngine;
 
-namespace Script.UI
+namespace Member.KDH._03.Scripts.UI
 {
     public class TestInventory : MonoBehaviour
     {

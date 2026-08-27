@@ -8,6 +8,7 @@ namespace Member.KYM.Scripts.Players.FSM
     {
         protected PlayerMover _mover;
         protected PlayerController _player;
+        private readonly PlayerAnimationRiggingController _riggingController;
         protected const float INPUT_DEADLINE = 0.1f;
         
         public AbstractPlayerState(Agent agent, int stateClipHash) : base(agent, stateClipHash)
@@ -16,6 +17,19 @@ namespace Member.KYM.Scripts.Players.FSM
             Debug.Assert(_mover != null, "mover is null");
             _player = agent as PlayerController;
             Debug.Assert(_player != null, "agent is not player");
+            _riggingController =
+                agent.GetModule<PlayerAnimationRiggingController>();
+        }
+
+        public override void Enter(float transitionDuration, int layerIndex = 0)
+        {
+            ResetAnimationRigging();
+            base.Enter(transitionDuration, layerIndex);
+        }
+
+        protected void ResetAnimationRigging()
+        {
+            _riggingController?.ResetRigging();
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using KimLIb.ModuleSystems;
+using Member.KYM.Scripts.CombatSystems.WeaponSystem;
 using UnityEngine;
 
 namespace Member.KYM.Scripts.CombatSystems.DamageSystems
@@ -8,73 +8,49 @@ namespace Member.KYM.Scripts.CombatSystems.DamageSystems
     public enum OverlapCastType
     {
         Sphere,
-        Box,
-        Capsule
+        Box
     }
 
-    public class OverlapDamageCaster : MonoBehaviour
+    public class OverlapDamageCaster : AbstractDamageCaster
     {
-        [SerializeField] private bool useWeaponRendererBounds = true;
-        [SerializeField, Min(0f)] private float rendererBoundsPadding = 0.1f;
+        [Header("Cast Shape")]
         [SerializeField] private OverlapCastType castType = OverlapCastType.Box;
-        [SerializeField] private Vector3 offset;
-        [SerializeField] private Vector3 boxSize = Vector3.one;
         [SerializeField, Min(0f)] private float radius = 0.5f;
-        [SerializeField, Min(0f)] private float capsuleHeight = 2f;
-        [SerializeField] private LayerMask targetLayers = ~0;
+        [SerializeField] private Vector3 boxSize = Vector3.one;
+
+        [Header("Cast Buffer")]
         [SerializeField, Min(1)] private int maxHitCount = 32;
 
-        public IReadOnlyList<DamageCastResult> CastResults => _castResults;
-        public int CastResultCount => _castResults.Count;
+        [Header("Debug")]
+        [SerializeField] private bool isDebug = true;
 
-        public event Action<DamageCastResult> OnDamageApplied;
+        private Collider[] _hitResults = Array.Empty<Collider>();
 
-        private readonly List<DamageCastResult> _castResults = new();
-        private readonly HashSet<IDamageable> _uniqueTargets = new();
-        private ModuleOwner _owner;
-        private Collider[] _hitBuffer;
-        private Renderer[] _weaponRenderers;
-
-        public void Initialize(ModuleOwner owner)
+        public override void Initialize(ModuleOwner owner)
         {
-            _owner = owner;
-            _hitBuffer = new Collider[Mathf.Max(1, maxHitCount)];
-            Transform weaponRoot = transform.parent != null
-                ? transform.parent
-                : transform;
-            _weaponRenderers = weaponRoot.GetComponentsInChildren<Renderer>();
+            base.Initialize(owner);
+            InitializeBuffers();
         }
 
-        public int CastAndApply(WeaponDataSO weaponData, SkillDataSO skillData)
+        public override int CastTargets(
+            Vector3 position,
+            Vector3 direction,
+            WeaponDataSO weaponData,
+            SkillDataSO skillData)
         {
-            int resultCount = CastTargets(weaponData, skillData);
+            EnsureBuffers();
+            ClearResults();
 
-            foreach (DamageCastResult result in _castResults)
-            {
-                result.Damageable.ApplyDamage(result.DamageData);
-                OnDamageApplied?.Invoke(result);
-            }
-
-            return resultCount;
-        }
-
-        public int CastTargets(WeaponDataSO weaponData, SkillDataSO skillData)
-        {
-            _castResults.Clear();
-            _uniqueTargets.Clear();
-
-            if (_owner == null || weaponData == null || skillData == null)
+            if (CasterOwner == null || weaponData == null || skillData == null)
                 return 0;
 
-            EnsureBuffer();
-
-            int hitCount = Overlap(out Vector3 center);
+            int hitCount = OverlapTargets(position);
             float damageAmount = weaponData.AttackPower
                                  * Mathf.Max(0f, skillData.damageMultiplier);
 
             for (int index = 0; index < hitCount; index++)
             {
-                Collider hitCollider = _hitBuffer[index];
+                Collider hitCollider = _hitResults[index];
 
                 if (hitCollider == null)
                     continue;
@@ -85,21 +61,17 @@ namespace Member.KYM.Scripts.CombatSystems.DamageSystems
                     ? targetOwner.GetModule<IDamageable>()
                     : hitCollider.GetComponentInParent<IDamageable>();
 
-                if (damageable == null
-                    || targetOwner == _owner
-                    || !_uniqueTargets.Add(damageable))
-                {
+                if (damageable == null || targetOwner == CasterOwner)
                     continue;
-                }
 
-                Vector3 hitPoint = hitCollider.ClosestPoint(center);
-                Vector3 hitNormal = hitPoint - center;
+                Vector3 hitPoint = hitCollider.ClosestPoint(position);
+                Vector3 hitNormal = hitPoint - position;
 
                 if (hitNormal.sqrMagnitude > 0.001f)
                     hitNormal.Normalize();
 
                 DamageData damageData = new(
-                    _owner,
+                    CasterOwner,
                     weaponData,
                     skillData,
                     damageAmount,
@@ -108,92 +80,99 @@ namespace Member.KYM.Scripts.CombatSystems.DamageSystems
                     hitPoint,
                     hitNormal);
 
-                _castResults.Add(new DamageCastResult(
+                TryAddCastResult(new DamageCastResult(
                     damageable,
                     hitCollider,
                     damageData));
             }
 
-            return _castResults.Count;
+            return CastResultCount;
         }
 
-        private int Overlap(out Vector3 center)
+        public void SetRadius(float value)
         {
-            if (useWeaponRendererBounds
-                && TryGetWeaponBounds(out Bounds weaponBounds))
-            {
-                center = weaponBounds.center;
-                return Physics.OverlapBoxNonAlloc(
-                    center,
-                    weaponBounds.extents + Vector3.one * rendererBoundsPadding,
-                    _hitBuffer,
-                    Quaternion.identity,
-                    targetLayers,
-                    QueryTriggerInteraction.Collide);
-            }
+            radius = Mathf.Max(0f, value);
+        }
 
-            center = transform.TransformPoint(offset);
+        public void SetBoxSize(Vector3 value)
+        {
+            boxSize = Vector3.Max(Vector3.zero, value);
+        }
 
+        private int OverlapTargets(Vector3 position)
+        {
             return castType switch
             {
                 OverlapCastType.Sphere => Physics.OverlapSphereNonAlloc(
-                    center,
+                    position,
                     Mathf.Max(0f, radius),
-                    _hitBuffer,
+                    _hitResults,
                     targetLayers,
                     QueryTriggerInteraction.Collide),
 
                 OverlapCastType.Box => Physics.OverlapBoxNonAlloc(
-                    center,
+                    position,
                     Vector3.Max(Vector3.zero, boxSize) * 0.5f,
-                    _hitBuffer,
+                    _hitResults,
                     transform.rotation,
                     targetLayers,
                     QueryTriggerInteraction.Collide),
-
-                OverlapCastType.Capsule => OverlapCapsule(center),
 
                 _ => 0
             };
         }
 
-        private int OverlapCapsule(Vector3 center)
+        private void InitializeBuffers()
         {
-            float safeRadius = Mathf.Max(0f, radius);
-            float halfLine = Mathf.Max(0f, capsuleHeight * 0.5f - safeRadius);
-            Vector3 axis = transform.up * halfLine;
-
-            return Physics.OverlapCapsuleNonAlloc(
-                center + axis,
-                center - axis,
-                safeRadius,
-                _hitBuffer,
-                targetLayers,
-                QueryTriggerInteraction.Collide);
+            int bufferSize = Mathf.Max(1, maxHitCount);
+            _hitResults = new Collider[bufferSize];
+            InitializeCastResults(bufferSize);
         }
 
-        private bool TryGetWeaponBounds(out Bounds bounds)
+        private void EnsureBuffers()
         {
-            if (_weaponRenderers == null || _weaponRenderers.Length == 0)
+            int bufferSize = Mathf.Max(1, maxHitCount);
+
+            if (_hitResults.Length != bufferSize
+                || _castResults.Length != bufferSize)
             {
-                bounds = default;
-                return false;
+                InitializeBuffers();
             }
-
-            bounds = _weaponRenderers[0].bounds;
-
-            for (int index = 1; index < _weaponRenderers.Length; index++)
-                bounds.Encapsulate(_weaponRenderers[index].bounds);
-
-            return true;
         }
 
-        private void EnsureBuffer()
+        private void ClearResults()
         {
-            int size = Mathf.Max(1, maxHitCount);
+            ClearCastResults();
+            Array.Clear(_hitResults, 0, _hitResults.Length);
+        }
 
-            if (_hitBuffer == null || _hitBuffer.Length != size)
-                _hitBuffer = new Collider[size];
+        private void OnDrawGizmos()
+        {
+            if (!isDebug)
+                return;
+
+            Gizmos.color = Color.red;
+
+            switch (castType)
+            {
+                case OverlapCastType.Sphere:
+                    Gizmos.DrawWireSphere(
+                        transform.position,
+                        Mathf.Max(0f, radius));
+                    break;
+
+                case OverlapCastType.Box:
+                    Matrix4x4 previousMatrix = Gizmos.matrix;
+
+                    Gizmos.matrix = Matrix4x4.TRS(
+                        transform.position,
+                        transform.rotation,
+                        Vector3.one);
+
+                    Gizmos.DrawWireCube(Vector3.zero, boxSize);
+                    Gizmos.matrix = previousMatrix;
+                    break;
+            }
         }
     }
 }

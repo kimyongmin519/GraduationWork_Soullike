@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5652271952151910334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_morgenstern_03
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+--- !u!4 &5330676573757927509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 779af96457352e94ca67f81d4de61c69, type: 3}
+  m_PrefabInstance: {fileID: 5652271952151910334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7111756804202052914
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5330676573757927509}
+    m_Modifications:
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519712615739886348, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007280758924464566, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_morgenstern_03_Detail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 713a798b71c09cf45945c781ad99a30e, type: 3}

@@ -6,6 +6,7 @@ namespace Member.KYM.Scripts.Players.FSM
 {
     public class PlayerRunState : AbstractPlayerMoveState
     {
+        private readonly float _runStaminaAmount = 0.02f;
         private Vector2 _currentMoveInput;
         
         public PlayerRunState(Agent agent, int stateClipHash) : base(agent, stateClipHash)
@@ -35,8 +36,8 @@ namespace Member.KYM.Scripts.Players.FSM
         public override void Update()
         {
             base.Update();
-
-            if (_currentMoveInput.magnitude < INPUT_DEADLINE)
+                
+            if (_currentMoveInput.magnitude < INPUT_DEADLINE || !_player.StaminaModule.TryConsume(_runStaminaAmount))
             {
                 _mover.SetMovementDir(Vector2.zero);
                 _player.ChangeState(PlayerStateEnum.IDLE, 0.2f);

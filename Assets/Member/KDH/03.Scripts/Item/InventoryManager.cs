@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script.Item
+namespace Member.KDH._03.Scripts.Item
 {
     public class InventoryManager : MonoBehaviour
     {

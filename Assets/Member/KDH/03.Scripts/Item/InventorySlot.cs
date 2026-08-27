@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Script.Item
+namespace Member.KDH._03.Scripts.Item
 {
     public class InventorySlot : MonoBehaviour
     {

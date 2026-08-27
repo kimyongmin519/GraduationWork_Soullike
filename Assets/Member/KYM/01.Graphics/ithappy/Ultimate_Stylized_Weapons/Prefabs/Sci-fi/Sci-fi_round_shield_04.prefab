@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2249802174172308918
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4804180023571553921}
+    m_Modifications:
+    - target: {fileID: 2323750805693322987, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_Name
+      value: Sci-fi_round_shield_04_Detail_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.029
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131215221173029969, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50bce5ab52fef1f4987f4f5a35178fd6, type: 3}
+--- !u!1001 &3592337781666899586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4804180023571553921}
+    m_Modifications:
+    - target: {fileID: 2490945719050569824, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_Name
+      value: Sci-fi_round_shield_04_Detail_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3015807852925833946, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c21a17cf255f8d64683a8b7aab84992e, type: 3}
+--- !u!1001 &4981360770114648426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+      propertyPath: m_Name
+      value: Sci-fi_round_shield_04
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+--- !u!4 &4804180023571553921 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35f2d7f903877c149acf57b7454495c9, type: 3}
+  m_PrefabInstance: {fileID: 4981360770114648426}
+  m_PrefabAsset: {fileID: 0}

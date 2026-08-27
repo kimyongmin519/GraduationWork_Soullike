@@ -1,0 +1,520 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &647641713911768419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 6278393803751634035, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2122
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659281555821784777, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ebd572eab956b74eaabc807a00087e1, type: 3}
+--- !u!1001 &1153382220461595250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 1626409808646496278, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1241
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5316
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151027056369318572, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a669ba89dc1e9374ea873fcdc1ad3997, type: 3}
+--- !u!1001 &2112881057072188500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1241
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5316
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422865749082889302, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050889591834511084, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_04
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 34cfd16dd157aa941bf4ff8191cd8d92, type: 3}
+--- !u!1001 &2785699253782741810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+--- !u!4 &2387598069089166553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f7cea3ed51502c4c9f1774c53562814, type: 3}
+  m_PrefabInstance: {fileID: 2785699253782741810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2907474595705109774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 2821609197818038183, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2122
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.674
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198556502279003421, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5341552cd258f954983c5dc974eabeeb, type: 3}
+--- !u!1001 &4308284599942044549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 543801369073387458, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1759
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6031
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918779242316946808, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa34b38134261504196896b62ec76bb9, type: 3}
+--- !u!1001 &5011557728718215529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1744
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.788
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491365172672563735, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980235137358090413, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1bfac3916bb914a40b7442d609cf16bd, type: 3}
+--- !u!1001 &5382038773089296529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 3706651866553328634, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1759
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051969279766264128, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1d8145950ea61d4491b0d75c6170390, type: 3}
+--- !u!1001 &5384210932857288703
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2387598069089166553}
+    m_Modifications:
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1744
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.788
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910850372222682848, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399437522107227226, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
+      propertyPath: m_Name
+      value: Fantasy_two_handed_axe_02_Detail_08
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 069d82b0ea13d384e8753b0b4191b2e3, type: 3}
