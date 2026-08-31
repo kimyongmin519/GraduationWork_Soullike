@@ -8,6 +8,8 @@ namespace Member.KYM.Scripts.Players
 {
     public class PlayerWeaponAnimationController : MonoBehaviour, IModule, IAfterInitModule
     {
+        private static readonly int IsCombatHash = Animator.StringToHash("IsCombat");
+
         public WeaponType CurrentWeaponType { get; private set; } = WeaponType.None;
         public int ActiveWeaponLayerIndex { get; private set; } = -1;
 
@@ -36,9 +38,6 @@ namespace Member.KYM.Scripts.Players
             if (_weaponController != null)
                 _weaponController.OnWeaponChanged += HandleWeaponChanged;
 
-            if (_player != null)
-                _player.OnCombatModeChanged += HandleCombatModeChanged;
-
             HandleWeaponChanged(_weaponController?.CurrentWeaponData);
         }
 
@@ -46,9 +45,6 @@ namespace Member.KYM.Scripts.Players
         {
             if (_weaponController != null)
                 _weaponController.OnWeaponChanged -= HandleWeaponChanged;
-
-            if (_player != null)
-                _player.OnCombatModeChanged -= HandleCombatModeChanged;
 
             DeactivateActiveLayer();
         }
@@ -59,20 +55,15 @@ namespace Member.KYM.Scripts.Players
             CurrentWeaponType = weaponData != null
                 ? weaponData.WeaponType
                 : WeaponType.None;
-            RefreshLayerWeights();
-        }
-
-        private void HandleCombatModeChanged(PlayerCombatModes combatMode)
-        {
+            _playerRenderer.Animator.SetFloat(
+                IsCombatHash,
+                weaponData != null ? (float)PlayerCombatModes.COMBAT : (float)PlayerCombatModes.NORMAL);
             RefreshLayerWeights();
         }
 
         private void RefreshLayerWeights()
         {
             DeactivateActiveLayer();
-
-            if (_player == null || _player.CombatMode != PlayerCombatModes.COMBAT)
-                return;
 
             if (_currentWeaponData == null)
                 return;

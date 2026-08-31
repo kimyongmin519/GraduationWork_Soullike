@@ -3,6 +3,7 @@ using KimLIb.ModuleSystems;
 using Member.KYM.Scripts.CombatSystems;
 using Member.KYM.Scripts.CombatSystems.DamageSystems;
 using Member.KYM.Scripts.CombatSystems.WeaponSystem;
+using Member.KYM.Scripts.Players.FSM;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,12 +24,17 @@ namespace Member.KYM.Scripts.Players
         public int CurrentWeaponIndex { get; private set; } = -1;
 
         private ModuleOwner _owner;
+        private PlayerController _player;
         private PlayerWeaponHolder _weaponHolder;
 
         public void Initialize(ModuleOwner owner)
         {
             _owner = owner;
+            _player = owner as PlayerController;
             _weaponHolder = owner.GetModule<PlayerWeaponHolder>();
+            Debug.Assert(
+                _player != null,
+                "PlayerWeaponController requires PlayerController.");
             Debug.Assert(
                 _weaponHolder != null,
                 "PlayerWeaponController requires PlayerWeaponHolder.");
@@ -63,18 +69,9 @@ namespace Member.KYM.Scripts.Players
             if (testLoadout == null || testLoadout.Length == 0)
                 return false;
 
-            int startIndex = CurrentWeaponIndex;
-
-            for (int offset = 1; offset <= testLoadout.Length; offset++)
-            {
-                int nextIndex = (startIndex + offset + testLoadout.Length)
-                                % testLoadout.Length;
-
-                if (testLoadout[nextIndex] != null)
-                    return EquipWeapon(nextIndex);
-            }
-
-            return false;
+            int nextIndex = (CurrentWeaponIndex + 1 + testLoadout.Length)
+                            % testLoadout.Length;
+            return EquipWeapon(nextIndex);
         }
 
         public bool EquipWeapon(int loadoutIndex)
@@ -88,8 +85,14 @@ namespace Member.KYM.Scripts.Players
 
             WeaponDataSO weaponData = testLoadout[loadoutIndex];
 
-            if (!EquipWeapon(weaponData))
-                return false;
+            if (weaponData == null)
+            {
+                UnequipWeapon();
+                CurrentWeaponIndex = loadoutIndex;
+                return true;
+            }
+
+            if (!EquipWeapon(weaponData)) return false;
 
             CurrentWeaponIndex = loadoutIndex;
             return true;
@@ -97,7 +100,10 @@ namespace Member.KYM.Scripts.Players
 
         public bool EquipWeapon(WeaponDataSO weaponData)
         {
-            if (_weaponHolder == null || weaponData == null || weaponData.WeaponPrefab == null)
+            if (weaponData == null)
+                return UnequipWeapon();
+
+            if (_weaponHolder == null || weaponData.WeaponPrefab == null)
             {
                 return false;
             }
@@ -114,6 +120,7 @@ namespace Member.KYM.Scripts.Players
 
             CurrentWeaponData = weaponData;
             CurrentWeaponInstance = newWeapon;
+            SetCombatMode(PlayerCombatModes.COMBAT);
 
             if (previousWeapon != null && previousWeapon != newWeapon.transform)
             {
@@ -123,6 +130,34 @@ namespace Member.KYM.Scripts.Players
 
             OnWeaponChanged?.Invoke(weaponData);
             return true;
+        }
+
+        public bool UnequipWeapon()
+        {
+            Transform previousWeapon = _weaponHolder != null
+                ? _weaponHolder.CurrentWeapon
+                : null;
+
+            _weaponHolder?.SetWeapon(null);
+            CurrentWeaponData = null;
+            CurrentWeaponInstance = null;
+            CurrentWeaponIndex = -1;
+            SetCombatMode(PlayerCombatModes.NORMAL);
+
+            if (previousWeapon != null)
+            {
+                previousWeapon.gameObject.SetActive(false);
+                Destroy(previousWeapon.gameObject);
+            }
+
+            OnWeaponChanged?.Invoke(null);
+            return true;
+        }
+
+        private void SetCombatMode(PlayerCombatModes combatMode)
+        {
+            if (_player != null)
+                _player.CombatMode = combatMode;
         }
     }
 }

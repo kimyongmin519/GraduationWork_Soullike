@@ -27,9 +27,6 @@ namespace Member.KYM.Scripts.Players.FSM
         private bool _previousUseGravity;
         private bool _isTraversalActive;
 
-        private PlayerWeaponHolder _weaponHolder;
-        private bool _restoreWeaponAfterJump;
-
         public PlayerJumpState(Agent agent, int stateClipHash)
             : base(agent, stateClipHash)
         {
@@ -73,14 +70,6 @@ namespace Member.KYM.Scripts.Players.FSM
             _alignmentStartPosition = _player.transform.position;
             _alignmentStartRotation = _player.transform.rotation;
 
-            if (_weaponHolder == null)
-                _weaponHolder = _player.GetModule<PlayerWeaponHolder>();
-
-            _restoreWeaponAfterJump = _weaponHolder != null
-                                      && _weaponHolder.IsWeaponInHand;
-
-            if (_restoreWeaponAfterJump)
-                _weaponHolder.AttachToBack();
         }
 
         public override void Update()
@@ -155,14 +144,11 @@ namespace Member.KYM.Scripts.Players.FSM
                 _mover.UseRootMotion = _previousUseRootMotion;
                 _mover.UseGravity = _previousUseGravity;
 
-                if (_restoreWeaponAfterJump && _weaponHolder != null)
-                    _weaponHolder.AttachToHand();
             }
 
             _player.ClearJumpLink();
             _jumpLink = null;
             _isTraversalActive = false;
-            _restoreWeaponAfterJump = false;
             base.Exit();
         }
     }

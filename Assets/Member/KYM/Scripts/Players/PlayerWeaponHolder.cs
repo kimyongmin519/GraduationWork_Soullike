@@ -6,14 +6,16 @@ namespace Member.KYM.Scripts.Players
     public class PlayerWeaponHolder : MonoBehaviour, IModule
     {
         [SerializeField] private Transform weapon;
-        [SerializeField] private Transform backSocket;
         [SerializeField] private Transform handSocket;
         public bool IsWeaponInHand { get; private set; }
         public Transform CurrentWeapon => weapon;
 
         public void Initialize(ModuleOwner owner)
         {
-            AttachToBack();
+            if (weapon != null)
+                AttachToHand();
+            else
+                IsWeaponInHand = false;
         }
 
 
@@ -23,23 +25,14 @@ namespace Member.KYM.Scripts.Players
             IsWeaponInHand = true;
         }
 
-        public void AttachToBack()
-        {
-            Attach(weapon, backSocket);
-            IsWeaponInHand = false;
-        }
-
         public void SetWeapon(Transform newWeapon)
         {
-            if (newWeapon == null)
-                return;
-
             weapon = newWeapon;
 
-            if (IsWeaponInHand)
+            if (weapon != null)
                 AttachToHand();
             else
-                AttachToBack();
+                IsWeaponInHand = false;
         }
 
         private void Attach( Transform target, Transform socket)

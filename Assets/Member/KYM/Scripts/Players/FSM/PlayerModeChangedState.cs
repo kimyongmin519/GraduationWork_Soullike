@@ -9,7 +9,7 @@ namespace Member.KYM.Scripts.Players.FSM
     {
         private readonly int isCombatHash = Animator.StringToHash("IsCombat");
         private AgentTrigger _trigger;
-        private PlayerWeaponHolder _weaponHoler;
+        private PlayerWeaponController _weaponController;
         
         public PlayerModeChangedState(Agent agent, int stateClipHash) : base(agent, stateClipHash)
         {
@@ -18,32 +18,20 @@ namespace Member.KYM.Scripts.Players.FSM
 
         public override void Enter(float transitionDuration, int layerIndex = 0)
         {
-            _player.CombatMode = _player.CombatMode == PlayerCombatModes.NORMAL ? PlayerCombatModes.COMBAT : PlayerCombatModes.NORMAL;
+            if (_weaponController == null)
+                _weaponController = _player.GetModule<PlayerWeaponController>();
+
+            _player.CombatMode = _weaponController?.CurrentWeaponData != null
+                ? PlayerCombatModes.COMBAT
+                : PlayerCombatModes.NORMAL;
             _renderer.Animator.SetFloat(isCombatHash, (float)_player.CombatMode);
 
             base.Enter(transitionDuration, layerIndex);
             if (_trigger == null)
                 _trigger = _player.GetModule<AgentTrigger>();
-            if (_weaponHoler == null)
-                _weaponHoler = _player.GetModule<PlayerWeaponHolder>();
-
             _mover.CanManualMove = false;
 
-            _trigger.OnAnimationSpecialTrigger += HandleWeaponTrmSwitch;
             _trigger.OnAnimationEnd += HandleAnimationEnd;
-        }
-
-        private void HandleWeaponTrmSwitch()
-        {
-            switch (_player.CombatMode)
-            {
-                case PlayerCombatModes.NORMAL:
-                    _weaponHoler.AttachToBack();
-                    break;
-                case PlayerCombatModes.COMBAT:
-                    _weaponHoler.AttachToHand();
-                    break;
-            }
         }
 
         private void HandleAnimationEnd()
@@ -55,7 +43,6 @@ namespace Member.KYM.Scripts.Players.FSM
         {
             base.Exit();
             _mover.CanManualMove = true;
-            _trigger.OnAnimationSpecialTrigger -= HandleWeaponTrmSwitch;
             _trigger.OnAnimationEnd -= HandleAnimationEnd;
         }
     }

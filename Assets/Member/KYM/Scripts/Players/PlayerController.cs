@@ -63,7 +63,6 @@ namespace Member.KYM.Scripts.Players
             base.AfterInitializeModules();
 
             PlayerInput.OnSpaceBarPressed += HandleSpaceBarPressed;
-            PlayerInput.OnFKeyPressed += HandleFKeyPressed;
             PlayerInput.OnGuardKeyPressed += HandleGuardKeyPressed;
         }
         private void Start()
@@ -128,19 +127,12 @@ namespace Member.KYM.Scripts.Players
             if (value)
                 ChangeState(PlayerStateEnum.GUARD);
         }
-        private void HandleFKeyPressed()
-        {
-            if (StateMachine.CurrentState is not ICanModeChangeState) return;
-            
-            ChangeState(PlayerStateEnum.MODE_CHANGE);
-        }
-
         private void OnDestroy()
         {
             if (PlayerInput != null)
             {
                 PlayerInput.OnSpaceBarPressed -= HandleSpaceBarPressed;
-                PlayerInput.OnFKeyPressed -= HandleFKeyPressed;
+                PlayerInput.OnGuardKeyPressed -= HandleGuardKeyPressed;
             }
         }
 

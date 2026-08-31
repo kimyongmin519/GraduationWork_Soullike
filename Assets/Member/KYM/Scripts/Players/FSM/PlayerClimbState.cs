@@ -30,9 +30,6 @@ namespace Member.KYM.Scripts.Players.FSM
         private Vector3 _horizontalCorrectionStart;
         private Vector3 _horizontalCorrectionTarget;
 
-        private PlayerWeaponHolder _weaponHolder;
-        private bool _restoreWeaponAfterClimb;
-
         public PlayerClimbState(Agent agent, int stateClipHash) : base(agent, stateClipHash)
         {
         }
@@ -78,15 +75,6 @@ namespace Member.KYM.Scripts.Players.FSM
 
             _renderer.PlayClip(_climbLink.JumpAnimationHash, transitionDuration, layerIndex);
 
-            if (_weaponHolder == null)
-                _weaponHolder = _player.GetModule<PlayerWeaponHolder>();
-
-            _restoreWeaponAfterClimb = _weaponHolder != null && _weaponHolder.IsWeaponInHand;
-
-            if (_restoreWeaponAfterClimb)
-            {
-                _weaponHolder.AttachToBack();
-            }
         }
 
         public override void Update()
@@ -221,13 +209,6 @@ namespace Member.KYM.Scripts.Players.FSM
             _mover.IgnoreRootMotionCollision = false;
             _player.ClearClimbLink();
             _climbLink = null;
-
-            if (_restoreWeaponAfterClimb)
-            {
-                _weaponHolder.AttachToHand();
-            }
-
-            _restoreWeaponAfterClimb = false;
 
             base.Exit();
         }
