@@ -11,15 +11,8 @@ namespace Member.KYM.Scripts.Players.ClimbingSystems
 
         private void OnTriggerEnter(Collider other)
         {
-            if (_player != null)
-                return;
-
-            PlayerController player = other.GetComponentInParent<PlayerController>();
-
-            if (player == null)
-                return;
-
-            _player = player;
+            if (_player == null)
+                _player = other.GetComponentInParent<PlayerController>();
             
             _player.PlayerInput.OnEKeyPressed -= HandleInteraction;
             _player.PlayerInput.OnEKeyPressed += HandleInteraction;
@@ -27,14 +20,6 @@ namespace Member.KYM.Scripts.Players.ClimbingSystems
 
         private void OnTriggerExit(Collider other)
         {
-            if (_player == null)
-                return;
-
-            PlayerController player = other.GetComponentInParent<PlayerController>();
-
-            if (player != _player)
-                return;
-
             UnsubscribeInput();
         }
 
@@ -57,7 +42,6 @@ namespace Member.KYM.Scripts.Players.ClimbingSystems
                 return;
 
             _player.PlayerInput.OnEKeyPressed -= HandleInteraction;
-            _player = null;
         }
     }
 }

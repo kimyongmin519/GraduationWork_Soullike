@@ -36,7 +36,7 @@ namespace Member.KYM.Scripts.CoreSystems.RiggingSystems
             Vector3 animPos = _animator.GetIKPosition(goal);
             Quaternion animRot = _animator.GetIKRotation(goal);
 
-            float w = masterWeight * GetParam(weightParam, 1f);
+            float w = masterWeight * GetParam(weightParam, 0f);
             if (w <= 0)
             {
                 _animator.SetIKPositionWeight(goal, 0f);
